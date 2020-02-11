@@ -1,13 +1,12 @@
 import tuwien.auto.calimero.GroupAddress;
 import tuwien.auto.calimero.KNXException;
-import tuwien.auto.calimero.KNXFormatException;
-import tuwien.auto.calimero.KNXTimeoutException;
-import tuwien.auto.calimero.knxnetip.KNXnetIPTunnel;
-import tuwien.auto.calimero.link.KNXLinkClosedException;
 import tuwien.auto.calimero.link.KNXNetworkLinkIP;
 import tuwien.auto.calimero.link.medium.TPSettings;
 import tuwien.auto.calimero.process.ProcessCommunicator;
 import tuwien.auto.calimero.process.ProcessCommunicatorImpl;
+
+import java.net.Inet4Address;
+import java.net.InetSocketAddress;
 
 public class test {
 
@@ -15,10 +14,15 @@ public class test {
         fonction1();
     }
 
+    public static InetSocketAddress IPLocal = new InetSocketAddress("148.60.132.10", 0);
+    public static InetSocketAddress IPBloc = new InetSocketAddress("192.168.1.201",2536);
+
+
+
 
 
     public void fonction1 () throws KNXException, InterruptedException {
-        KNXNetworkLinkIP netLinkIp = new KNXNetworkLinkIP ("192.168.1.201", new TPSettings(false));
+        KNXNetworkLinkIP netLinkIp = new KNXNetworkLinkIP.newTunnelingLink(IPLocal, IPBloc, false, new TPSettings());
         ProcessCommunicator pc = new ProcessCommunicatorImpl(netLinkIp);
 
 
