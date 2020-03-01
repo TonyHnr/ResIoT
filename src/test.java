@@ -1,4 +1,5 @@
 import tuwien.auto.calimero.*;
+import tuwien.auto.calimero.link.KNXLinkClosedException;
 import tuwien.auto.calimero.link.KNXNetworkLinkIP;
 import tuwien.auto.calimero.link.NetworkLinkListener;
 import tuwien.auto.calimero.link.medium.TPSettings;
@@ -9,6 +10,9 @@ import tuwien.auto.calimero.process.ProcessCommunicatorImpl;
 import java.net.InetSocketAddress;
 
 public class test {
+
+    public test() throws KNXException, InterruptedException {
+    }
 
     public static void main(String[] args) throws KNXException, InterruptedException {
         fonction1();
@@ -21,11 +25,12 @@ public class test {
 
 
 
+
     public static void fonction1 () throws KNXException, InterruptedException {
         KNXNetworkLinkIP netLinkIp = KNXNetworkLinkIP.newTunnelingLink(IPLocal, IPBloc, false, new TPSettings());
         ProcessCommunicator pc = new ProcessCommunicatorImpl(netLinkIp);
+        Bouton2 chenillard = new Bouton2();
 
-        final String[] button = {""};
 
         netLinkIp.addLinkListener(new NetworkLinkListener() {
             @Override
@@ -39,8 +44,17 @@ public class test {
                 KNXAddress add = ((tuwien.auto.calimero.cemi.CEMILData) arg0.getFrame()).getDestination();
                 if(add.toString().charAt(0)=='1'){
                     System.out.println("targetadress " + ((tuwien.auto.calimero.cemi.CEMILData) arg0.getFrame()).getDestination());
+                    if(add.toString().charAt(add.toString().length()-1) == '1'){
+                        chenillard.start();
+                        if(add.toString().charAt(add.toString().length()-1) == '2'){
+                        chenillard.stopC();
+                        }
+
+                            }
+                        }
+
                 }
-            }
+
 
             @Override
             public void linkClosed(CloseEvent closeEvent) {
@@ -53,7 +67,7 @@ public class test {
 
 
 
-            for (int i = 0; i < 3; i++) {
+          /*  for (int i = 0; i < 3; i++) {
                 pc.write(new GroupAddress("0/0/1"), true);
                 Thread.sleep(1000);
                 pc.write(new GroupAddress("0/0/1"), false);
@@ -67,13 +81,19 @@ public class test {
                 Thread.sleep(1000);
                 pc.write(new GroupAddress("0/0/4"), false);
 
-            }
+            } */
 
+            Thread.sleep(20000);
 
             pc.close();
             netLinkIp.close();
 
     }
+
+
+
+
+
 
 
 
