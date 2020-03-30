@@ -11,96 +11,22 @@ import java.net.InetSocketAddress;
 
 public class test {
 
-    public test() throws KNXException, InterruptedException {
-    }
+    //Initialisation de la connexion maquette/machine
+
+    public static InetSocketAddress IPLocal = new InetSocketAddress("192.168.1.100", 0);
+    public static InetSocketAddress IPBloc = new InetSocketAddress("192.168.1.202",3671);
 
     public static void main(String[] args) throws KNXException, InterruptedException {
-        fonction1();
-    }
 
-    public static InetSocketAddress IPLocal = new InetSocketAddress("192.168.1.103", 0);
-    public static InetSocketAddress IPBloc = new InetSocketAddress("192.168.1.201",3671);
+        Connection connection = new Connection(IPLocal, IPBloc, false, new TPSettings(), 1000);
 
+        //Il regarde si la connexion est ouverte toutes les 700ms pour stopper si besoin
+        while (connection.estOuvert()) {
 
+            Thread.sleep(700);
 
-
-
-
-    public static void fonction1 () throws KNXException, InterruptedException {
-        KNXNetworkLinkIP netLinkIp = KNXNetworkLinkIP.newTunnelingLink(IPLocal, IPBloc, false, new TPSettings());
-        ProcessCommunicator pc = new ProcessCommunicatorImpl(netLinkIp);
-        Bouton2 chenillard = new Bouton2();
-
-
-        netLinkIp.addLinkListener(new NetworkLinkListener() {
-            @Override
-            public void confirmation(FrameEvent frameEvent) {
-
-            }
-
-            @Override
-            public void indication(FrameEvent arg0) {
-
-                KNXAddress add = ((tuwien.auto.calimero.cemi.CEMILData) arg0.getFrame()).getDestination();
-                if(add.toString().charAt(0)=='1'){
-                    System.out.println("targetadress " + ((tuwien.auto.calimero.cemi.CEMILData) arg0.getFrame()).getDestination());
-                    if(add.toString().charAt(add.toString().length()-1) == '1'){
-                        chenillard.start();
-                        if(add.toString().charAt(add.toString().length()-1) == '2'){
-                        chenillard.stopC();
-                        }
-
-                            }
-                        }
-
-                }
-
-
-            @Override
-            public void linkClosed(CloseEvent closeEvent) {
-
-            }
-        });
-
-
-        //pc.write(new GroupAddress("0/0/1"), true);
-
-
-
-          /*  for (int i = 0; i < 3; i++) {
-                pc.write(new GroupAddress("0/0/1"), true);
-                Thread.sleep(1000);
-                pc.write(new GroupAddress("0/0/1"), false);
-                pc.write(new GroupAddress("0/0/2"), true);
-                Thread.sleep(1000);
-                pc.write(new GroupAddress("0/0/2"), false);
-                pc.write(new GroupAddress("0/0/3"), true);
-                Thread.sleep(1000);
-                pc.write(new GroupAddress("0/0/3"), false);
-                pc.write(new GroupAddress("0/0/4"), true);
-                Thread.sleep(1000);
-                pc.write(new GroupAddress("0/0/4"), false);
-
-            } */
-
-            Thread.sleep(20000);
-
-            pc.close();
-            netLinkIp.close();
+        }
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
