@@ -18,9 +18,13 @@ public class Connection implements  NetworkLinkListener{
 
     private Chenillard chenillard;
 
+    //private UneSurDeux unsurdeux;
+
     private ProcessCommunicator pc;
 
     private  int vit;
+
+    private int compteur;
 
     private KNXNetworkLinkIP netLinkIp;
 
@@ -33,8 +37,11 @@ public class Connection implements  NetworkLinkListener{
         //Vitesse initialiser à 1000ms
          this.vit = 1000;
          //On initialise un chenillard
-        chenillard = new Chenillard(pc, vit);
+        this.compteur=1;
+        chenillard = new Chenillard(pc, vit,compteur);
+       // unsurdeux = new UneSurDeux(pc,vit);
         netLinkIp.addLinkListener(this);
+
 
     }
 
@@ -71,16 +78,19 @@ public class Connection implements  NetworkLinkListener{
             if(add.toString().charAt(add.toString().length()-1) == '1') {
 
                 //Si la vitesse n'est pas en dessous de 200ms, on lance un chenillard classique
-                if (vit >= 200) {
                     vit = 1000;
-                    chenillard.stopC();
-                    chenillard = new Chenillard(pc, vit);
+                    if(compteur==5){
+                        compteur=1;
+                    }
+                        chenillard.stopC();
+
+
+                    chenillard = new Chenillard(pc, vit, compteur);
                     chenillard.start();
                     System.out.println("start : "+ vit);
-                }
-                else{
-                    System.out.println("no work " + vit);
-                }
+                System.out.println("compteur : "+ compteur);
+
+
 
             }
 
@@ -99,13 +109,13 @@ public class Connection implements  NetworkLinkListener{
             //Interrupteur 2
             if(add.toString().charAt(add.toString().length()-1) == '2') {
 
-                //On diminue la vitesse
+                //On augmente la vitesse
                 chenillard.stopC();
                 if (vit >=300) {
                     vit = vit - 100;
                 }
                 //On lance un nouveau chenillard
-                chenillard = new Chenillard(pc, vit);
+                chenillard = new Chenillard(pc, vit, compteur);
                 chenillard.start();
                 System.out.println("vitesse : " + vit);
 
@@ -114,12 +124,32 @@ public class Connection implements  NetworkLinkListener{
             //Interrupteur 3
             if(add.toString().charAt(add.toString().length()-1) == '3') {
 
-                //On augmente la vitesse et on lance un nouveau chenillard
+
+                if (compteur==5){
+                    compteur=-1;
+                }
+
                 chenillard.stopC();
-                vit = vit + 100;
-                chenillard = new Chenillard(pc, vit);
+                System.out.println("compteur : "+ compteur);
+
+                if(compteur==0 || compteur==1 || compteur==-1){
+                    compteur++;
+                    System.out.println("compteur : "+ compteur);
+                    chenillard = new Chenillard(pc, vit,compteur);
+                }
+                else if(compteur==2 || compteur==3){
+                    compteur++;
+                    System.out.println("compteur : "+ compteur);
+                    chenillard = new Chenillard(pc, vit,compteur);
+
+                }
+                else if(compteur==4 || compteur==5){
+                    compteur++;
+                    System.out.println("compteur : "+ compteur);
+                    chenillard = new Chenillard(pc, vit,compteur);
+
+                }
                 chenillard.start();
-                System.out.println("vitesse : " + vit);
 
             }
 
