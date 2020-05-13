@@ -14,15 +14,26 @@ import com.sun.jersey.spi.container.servlet.ServletContainer;
 public class MinimalServerRest {
 
      public static void main(String[] args) throws Exception {
-         ServletHolder sh = new ServletHolder(ServletContainer.class);    
-         sh.setInitParameter("com.sun.jersey.config.property.resourceConfigClass", "com.sun.jersey.api.core.PackagesResourceConfig");
-         sh.setInitParameter("com.sun.jersey.config.property.packages", "rest");//Set the package where the services reside
-         sh.setInitParameter("com.sun.jersey.api.json.POJOMappingFeature", "true");
-       
-         Server server = new Server(9999);
-         ServletContextHandler context = new ServletContextHandler(server, "/", ServletContextHandler.SESSIONS);
-         context.addServlet(sh, "/*");
-         server.start();
-         server.join();      
-      }
+         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+         context.setContextPath("/");
+
+         Server jettyServer = new Server(8080);
+         jettyServer.setHandler(context);
+
+         ServletHolder jerseyServlet = context.addServlet(
+                 org.glassfish.jersey.servlet.ServletContainer.class, "/*");
+         jerseyServlet.setInitOrder(0);
+
+         // Tells the Jersey Servlet which REST service/class to load.
+         jerseyServlet.setInitParameter(
+                 "jersey.config.server.provider.classnames",
+                 EntryPoint.class.getCanonicalName());
+
+         try {
+             jettyServer.start();
+             jettyServer.join();
+         } finally {
+             jettyServer.destroy();
+         }
+     }
 }
