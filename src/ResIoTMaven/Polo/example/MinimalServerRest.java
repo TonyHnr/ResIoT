@@ -1,4 +1,4 @@
-package ResIotMaven.Polo.example.server;
+package ResIoTMaven.Polo.example;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -7,9 +7,6 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.spi.container.servlet.ServletContainer;
 
 public class MinimalServerRest {
 

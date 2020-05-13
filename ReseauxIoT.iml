@@ -7,6 +7,21 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="calimero-core-2.4-rc2" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/Desktop/jar_files_simulation" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$USER_HOME$/Desktop/jar_files_simulation" />
+        </SOURCES>
+        <jarDirectory url="file://$USER_HOME$/Desktop/jar_files_simulation" recursive="false" />
+        <jarDirectory url="file://$USER_HOME$/Desktop/jar_files_simulation" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -17,7 +32,5 @@
         <jarDirectory url="file://$USER_HOME$/Desktop/jar_files" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="calimero-core-2.4-rc2" level="project" />
-    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>
