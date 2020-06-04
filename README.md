@@ -1,7 +1,7 @@
-# Projet ResIoT Tony HENRY et Pol-Ewen Mouraud#
-## Création d'un chennillard avec une maquette KNX#
+# Projet ResIoT Tony HENRY et Pol-Ewen Mouraud
+## Création d'un chennillard avec une maquette KNX
 
-###Construction de nos classes#
+### Construction de nos classes
 
 <p> 
  Nous avons créés 3 classes :
@@ -13,7 +13,7 @@
 </ul>
         
 
-###Fonctionnalités des interrupteurs#
+### Fonctionnalités des interrupteurs
 
 <p> N'ayant pas pu faire le serveur Rest à cause de notre erreur, nous allons donc vous décrire les fonctionnalités des 4 interrupteurs sur l'interface que vous nous avez donné.
   
