@@ -1,5 +1,5 @@
 # Projet ResIoT Tony HENRY et Pol-Ewen Mouraud
-## Création d'un chennillard avec une maquette KNX
+## Création d'un chenillard avec une maquette KNX
 
 ### Construction de nos classes
 
