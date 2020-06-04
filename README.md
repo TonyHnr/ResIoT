@@ -1,10 +1,21 @@
 # Projet ResIoT Tony HENRY et Pol-Ewen Mouraud
 ## Création d'un chennillard avec une maquette KNX
 
+###Construction de nos classes
 
+<p> 
+ Nous avons créés 3 classes :
+  <ul>
+    <li><strong>Chenillard.java : </strong> Création des 3 chenillards présentés dans un thread qui permet de gérer le temps et l'attente entre 2 actions. 
+    Un compteur permet de savoir quel chenillard activer</li>
+    <li><strong>Connection.java  : </strong> Initialise un thread (chenillard). Permet de savoir sur quels boutons on clique grâce à leur adresse. Ainsi en connaissant le bouton, nous pouvons activer, stopper, changer, modifier l'allure du chenillard. La vitesse et le compteur sont initialisés ici. </li>
+    <li><strong>test.java  : </strong> Permet d'initialiser la connection du lien KNX. C'est lui qu'on "Run"</li>
+</ul>
+        
 
+###Fonctionnalités des interrupteurs
 
-<p> N'ayant pas pu faire le serveur Rest à cause de notre erreur, nous allons donc vous décrire les fonctionnalités des 4 boutons sur l'interface que vous nous avez donné.
+<p> N'ayant pas pu faire le serveur Rest à cause de notre erreur, nous allons donc vous décrire les fonctionnalités des 4 interrupteurs sur l'interface que vous nous avez donné.
   
   
   <ul>
