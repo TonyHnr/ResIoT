@@ -79,7 +79,7 @@ public class Connection implements  NetworkLinkListener{
 
                 //Si la vitesse n'est pas en dessous de 200ms, on lance un chenillard classique
                     vit = 1000;
-                    if(compteur==5){
+                    if(compteur==5 || compteur==3){
                         compteur=1;
                     }
                         chenillard.stopC();
@@ -94,17 +94,6 @@ public class Connection implements  NetworkLinkListener{
 
             }
 
-
-            //Interrupteur 4
-            if(add.toString().charAt(add.toString().length()-1) == '4'){
-
-                //On arrète le chenillard en cours et le lien
-                chenillard.stopC();
-                System.out.println("stop");
-                pc.close();
-                netLinkIp.close();
-
-            }
 
             //Interrupteur 2
             if(add.toString().charAt(add.toString().length()-1) == '2') {
@@ -150,6 +139,19 @@ public class Connection implements  NetworkLinkListener{
 
                 }
                 chenillard.start();
+
+            }
+
+
+
+            //Interrupteur 4
+            if(add.toString().charAt(add.toString().length()-1) == '4'){
+
+                //On arrète le chenillard en cours et le lien
+                chenillard.stopC();
+                System.out.println("stop");
+                pc.close();
+                netLinkIp.close();
 
             }
 
