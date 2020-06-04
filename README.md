@@ -8,10 +8,10 @@
   
   
   <ul>
-    <li><strong>Interrupreur 1 </strong> : Initialisation du chenillard standard (lampe 1 - 2 - 3 - 4) avec une seconde entre chaque lampe </li>
-    <li>Interrupteur 2 : Permet d'augmenter la vitesse du chenillard en action, c'est à dire diminuer le temps entre 2 lampes. A chaque clique le temps diminue de 100ms.</li>
-    <li>Interrupteur 3 : Permet de changer le motif du chenillard à chaque clique. Nous avons 3 motifs : le standard, l'alterné (lampe 1 - 3 - 2 - 4) et l'inverse (lampe 4 - 3 - 2 - 1).</li>
-    <li>Interrupteur 4 : Permet d'arrêter le chenillard en action et ferme le lien KNX.</li>
+    <li><strong>Interrupreur 1  : </strong> Initialisation du chenillard standard (lampe 1 - 2 - 3 - 4) avec une seconde entre chaque lampe </li>
+    <li><strong>Interrupreur 2  : </strong> Permet d'augmenter la vitesse du chenillard en action, c'est à dire diminuer le temps entre 2 lampes. A chaque clique le temps diminue de 100ms.</li>
+    <li><strong>Interrupreur 3  : </strong> Permet de changer le motif du chenillard à chaque clique. Nous avons 3 motifs : le standard, l'alterné (lampe 1 - 3 - 2 - 4) et l'inverse (lampe 4 - 3 - 2 - 1).</li>
+    <li><strong>Interrupreur 4  : </strong> Permet d'arrêter le chenillard en action et ferme le lien KNX.</li>
 </ul>
                         
                         
