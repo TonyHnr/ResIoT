@@ -9,7 +9,9 @@
     <li><strong>Chenillard.java : </strong> Création des 3 chenillards présentés dans un thread qui permet de gérer le temps et l'attente entre 2 actions. 
     Un compteur permet de savoir quel chenillard activer</li>
     <li><strong>Connection.java  : </strong> Initialise un thread (chenillard). Permet de savoir sur quels boutons on clique grâce à leur adresse. Ainsi en connaissant le bouton, nous pouvons activer, stopper, changer, modifier l'allure du chenillard. La vitesse et le compteur sont initialisés ici. </li>
-    <li><strong>test.java  : </strong> Permet d'initialiser la connection du lien KNX. C'est lui qu'il faut "Run"</li>
+    <li><strong>test.java  : </strong> Permet d'initialiser la connection du lien KNX. C'est lui qu'il faut "Run".</li>
+    <li><strong>pom.xml  : </strong> Permet de gérer les diférentes dépendances.</li>
+
 </ul>
         
 
